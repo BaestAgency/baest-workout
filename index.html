@@ -452,11 +452,11 @@ const BADGES=[
 let selXP=20, cMode='day', curSlide=0;
 
 function gs(){
-  try{return JSON.parse(localStorage.getItem('baest_v2')||'null')||newState();}
+  try{return JSON.parse(localStorage.getItem('baest_v1')||'null')||newState();}
   catch(e){return newState();}
 }
 function newState(){return {xp:0,streak:0,lastDate:null,total:0,log:[],wd:{},ce:{},pd:{},pCount:0,ac:{},mood:{}};}
-function ss(s){try{localStorage.setItem('baest_v2',JSON.stringify(s));}catch(e){}}
+function ss(s){try{localStorage.setItem('baest_v1',JSON.stringify(s));}catch(e){}}
 function today(){return new Date().toISOString().slice(0,10);}
 function dIdx(){return new Date().getDay();}
 function glv(xp){for(let i=LEVELS.length-1;i>=0;i--)if(xp>=LEVELS[i].min)return i;return 0;}
