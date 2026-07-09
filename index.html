@@ -452,7 +452,13 @@ const BADGES=[
 let selXP=20, cMode='day', curSlide=0;
 
 function gs(){
-  try{return JSON.parse(localStorage.getItem('baest_v1')||'null')||newState();}
+  try{
+    const stored=localStorage.getItem('baest_v1');
+    if(stored){return JSON.parse(stored);}
+    const preset={"xp":95,"streak":3,"lastDate":"2026-07-09","total":3,"log":[],"wd":{"2026-07-07":true,"2026-07-08":true,"2026-07-09":true},"ce":{"2026-07-07":{"0":true,"1":true,"2":true,"3":true,"4":true},"2026-07-08":{"0":true},"2026-07-09":{"0":true,"1":true,"2":true,"3":true,"4":true}},"pd":{},"pCount":0,"ac":{},"mood":{}};
+    localStorage.setItem('baest_v1',JSON.stringify(preset));
+    return preset;
+  }
   catch(e){return newState();}
 }
 function newState(){return {xp:0,streak:0,lastDate:null,total:0,log:[],wd:{},ce:{},pd:{},pCount:0,ac:{},mood:{}};}
